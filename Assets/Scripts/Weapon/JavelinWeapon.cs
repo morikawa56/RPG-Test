@@ -10,6 +10,7 @@ public class JavelinWeapon : Weapon
     public GameObject bulletPrefab;
 
     private GameObject bulletGo;
+    public bool hasEquiped = false;
 
     private void Start()
     {
