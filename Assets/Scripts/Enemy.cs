@@ -75,11 +75,16 @@ public class Enemy : MonoBehaviour
         if (HP <= 0)
         {
             GetComponent<Collider>().enabled = false;
-            int count = Random.Range(0, 4);
+            // int count = Random.Range(0, 4);
+            int count = 4;
             for (int i = 0; i < count; i++)
             {
                 ItemScriptObject item = ItemDBManger.Instance.GetRandomItem();
-                GameObject.Instantiate(item.prefab, transform.position, Quaternion.identity);
+                Vector3 changedPosition = transform.position;
+                changedPosition.y += 0.6f;
+                GameObject go = GameObject.Instantiate(item.prefab, changedPosition, Quaternion.identity);
+                Animator animator = go.GetComponent<Animator>();
+                if(animator != null) animator.enabled = false;
             }
 
             Destroy(this.gameObject);
