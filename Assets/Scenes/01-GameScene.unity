@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 547342}
   - component: {fileID: 547341}
+  - component: {fileID: 547343}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -167,6 +168,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &547343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08f5c77711cdc5488d63f9736712996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList: []
 --- !u!4 &11911676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: df3e54dc943b87c4cad5d389b7d449c2, type: 3}
@@ -643,6 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3812fda3b27de3f44b9247852d5d4263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSO: {fileID: 0}
 --- !u!1001 &122733072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9442,6 +9457,7 @@ GameObject:
   - component: {fileID: 1832256877}
   - component: {fileID: 1832256876}
   - component: {fileID: 1832256879}
+  - component: {fileID: 1832256880}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9604,6 +9620,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
+--- !u!114 &1832256880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832256871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e2e5fb9c75a88e44ae6304d8dffaf87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1842264721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11137,6 +11165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponScythe
       objectReference: {fileID: 0}
+    - target: {fileID: 6013199169176388639, guid: 698785a7667c5b348a26b903cca05cbc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9075445230498334285, guid: 698785a7667c5b348a26b903cca05cbc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.092
@@ -11198,6 +11230,10 @@ PrefabInstance:
     - target: {fileID: 2364697300511819982, guid: 44aefa6e82997f8408b1db34918608ee, type: 3}
       propertyPath: m_Name
       value: WeaponJavelin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364697300511819982, guid: 44aefa6e82997f8408b1db34918608ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5900329570667475530, guid: 44aefa6e82997f8408b1db34918608ee, type: 3}
       propertyPath: m_LocalPosition.x

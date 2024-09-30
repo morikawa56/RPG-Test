@@ -20,7 +20,7 @@ public class JavelinBullet : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.CompareTag(Tag.PLAYER)) return;
-        if (!hasEquiped)
+        if (!hasEquiped && transform.parent.tag == Tag.INTERACTABLE)
         {
             Invoke(nameof(FreezeObject), 2.0f);
             return;

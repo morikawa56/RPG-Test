@@ -79,15 +79,36 @@ public class Enemy : MonoBehaviour
             int count = 4;
             for (int i = 0; i < count; i++)
             {
-                ItemScriptObject item = ItemDBManger.Instance.GetRandomItem();
-                Vector3 changedPosition = transform.position;
-                changedPosition.y += 0.6f;
-                GameObject go = GameObject.Instantiate(item.prefab, changedPosition, Quaternion.identity);
-                Animator animator = go.GetComponent<Animator>();
-                if(animator != null) animator.enabled = false;
+                SpawnPickableItem();
             }
 
             Destroy(this.gameObject);
+        }
+    }
+
+    private void SpawnPickableItem()
+    {
+        ItemScriptObject item = ItemDBManger.Instance.GetRandomItem();
+        Vector3 changedPosition = transform.position;
+        changedPosition.y += 0.6f;
+        GameObject go = GameObject.Instantiate(item.prefab, changedPosition, Quaternion.identity);
+        go.tag = Tag.INTERACTABLE;
+        Animator animator = go.GetComponent<Animator>();
+        if(animator != null) animator.enabled = false;
+        PickableObject po = go.AddComponent<PickableObject>();
+        po.itemSO = item;
+
+        Collider collider = go.GetComponent<Collider>();
+        if (collider != null)
+        {
+            collider.enabled = true;
+            collider.isTrigger = false;
+        }
+
+        Rigidbody rigidbody = go.GetComponent<Rigidbody>();
+        if (rigidbody != null)
+        {
+            rigidbody.isKinematic = false;
         }
     }
 }

@@ -93,6 +93,7 @@ public class JavelinWeapon : Weapon
     private void SpawnBullet()
     {
         _bulletGo = GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);
+        // 为子弹添加时间戳
         long epoch = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).Ticks;
         long epochSeconds = epoch / TimeSpan.TicksPerSecond;
         long epochMilliseconds = epoch / TimeSpan.TicksPerMillisecond;
@@ -100,6 +101,12 @@ public class JavelinWeapon : Weapon
         string unixTimestampMilliseconds = epochMilliseconds.ToString();
         _bulletGo.name = "JavelinBullet" + unixTimestampMilliseconds;
         _bulletGo.transform.parent = transform;
+        if (this.tag == Tag.INTERACTABLE)
+        {
+            _bulletGo.tag = Tag.INTERACTABLE;
+            PickableObject po = _bulletGo.AddComponent<PickableObject>();
+            po.itemSO = GetComponent<PickableObject>().itemSO;
+        }
     }
 
     private void ChangeBulletEquipedState(bool status)
