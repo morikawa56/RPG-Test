@@ -57,10 +57,10 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(30);
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     TakeDamage(30);
+        // }
     }
 
     Vector3 FindRandomPosition()

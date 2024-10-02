@@ -36,6 +36,8 @@ public class JavelinWeapon : Weapon
         }
     }
 
+    public bool HasEjected = false;
+
     private void Start()
     {
         SpawnBullet();
@@ -50,12 +52,18 @@ public class JavelinWeapon : Weapon
             }
             else
             {
-                HasEquiped = false;
+                if (!HasEjected)
+                {
+                    HasEquiped = false;
+                }
             }
         }
         else
         {
-            HasEquiped = false;
+            if (!HasEjected)
+            {
+                HasEquiped = false;
+            }
         }
     }
 
@@ -71,12 +79,18 @@ public class JavelinWeapon : Weapon
             }
             else
             {
-                HasEquiped = false;
+                if (!HasEjected)
+                {
+                    HasEquiped = false;
+                }
             }
         }
         else
         {
-            HasEquiped = false;
+            if (!HasEjected)
+            {
+                HasEquiped = false;
+            }
         }
     }
 
@@ -87,6 +101,8 @@ public class JavelinWeapon : Weapon
         _bulletGo.transform.parent = null;
         _bulletGo.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         _bulletGo = null;
+        HasEjected = true;
+        _bulletGo.GetComponent<JavelinBullet>().HasEjected = HasEjected;
         Invoke(nameof(SpawnBullet), 0.5f);
     }
 
