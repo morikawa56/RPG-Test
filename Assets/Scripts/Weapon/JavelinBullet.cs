@@ -52,6 +52,10 @@ public class JavelinBullet : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        if (!HasEjected)
+        {
+            ejectPoint = transform.position;
+        }
     }
 
     private void FreezeObject()
