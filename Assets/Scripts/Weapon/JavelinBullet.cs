@@ -9,6 +9,8 @@ public class JavelinBullet : MonoBehaviour
     public int attackVal = 20;
     private Rigidbody rgd;
     private Collider col;
+    private Vector3 ejectPoint;
+    private float destroyDistance = 20f;
 
     private bool hasEquiped = false;
     public bool HasEjected = false;
@@ -21,10 +23,10 @@ public class JavelinBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log(hasEquiped.ToString());
         if (other.collider.CompareTag(Tag.PLAYER)) return;
-        if (!hasEquiped)
+        if (!hasEquiped && !HasEjected)
         {
+            print("!hasEquiped || !HasEjected");
             Invoke(nameof(FreezeObject), 2.0f);
             return;
         }
@@ -34,16 +36,27 @@ public class JavelinBullet : MonoBehaviour
 
         if (other.gameObject.tag == Tag.ENEMY)
         {
-            print(11111);
             other.gameObject.GetComponent<Enemy>().TakeDamage(attackVal);
         }
 
         Destroy(this.gameObject, 1f);
     }
 
+    private void Update()
+    {
+        if (this.tag != Tag.INTERACTABLE && HasEjected)
+        {
+            float distance = Vector3.Distance(transform.position, ejectPoint);
+            if (distance > destroyDistance)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+    }
+
     private void FreezeObject()
     {
-        if (hasEquiped)
+        if (hasEquiped || HasEjected)
         {
             rgd.isKinematic = true;
             col.enabled = false;
@@ -55,5 +68,10 @@ public class JavelinBullet : MonoBehaviour
     public void SetEquiped(bool value)
     {
         hasEquiped = value;
+    }
+
+    public void SetEjectPoint(Vector3 Opoint)
+    {
+        ejectPoint = Opoint;
     }
 }

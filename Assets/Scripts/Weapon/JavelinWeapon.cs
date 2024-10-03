@@ -99,16 +99,21 @@ public class JavelinWeapon : Weapon
     {
         if (_bulletGo == null) return;
         _bulletGo.transform.parent = null;
-        _bulletGo.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-        _bulletGo = null;
+        _bulletGo.GetComponent<JavelinBullet>().SetEjectPoint(transform.position);
         HasEjected = true;
         _bulletGo.GetComponent<JavelinBullet>().HasEjected = HasEjected;
+        _bulletGo.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+        _bulletGo.GetComponent<Collider>().enabled = true;
+        _bulletGo = null;
         Invoke(nameof(SpawnBullet), 0.5f);
     }
 
     private void SpawnBullet()
     {
+        print("SpawnBullet");
         _bulletGo = GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);
+        HasEjected = false;
+        _bulletGo.GetComponent<JavelinBullet>().HasEjected = HasEjected;
         // 为子弹添加时间戳
         long epoch = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).Ticks;
         long epochSeconds = epoch / TimeSpan.TicksPerSecond;
@@ -117,11 +122,13 @@ public class JavelinWeapon : Weapon
         string unixTimestampMilliseconds = epochMilliseconds.ToString();
         _bulletGo.name = "JavelinBullet" + unixTimestampMilliseconds;
         _bulletGo.transform.parent = transform;
+        _bulletGo.GetComponent<Collider>().enabled = false;
         if (this.tag == Tag.INTERACTABLE)
         {
             _bulletGo.tag = Tag.INTERACTABLE;
             PickableObject po = _bulletGo.AddComponent<PickableObject>();
             po.itemSO = GetComponent<PickableObject>().itemSO;
+            _bulletGo.GetComponent<Collider>().enabled = true;
         }
     }
 
