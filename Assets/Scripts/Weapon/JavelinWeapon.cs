@@ -103,7 +103,7 @@ public class JavelinWeapon : Weapon
         HasEjected = true;
         _bulletGo.GetComponent<JavelinBullet>().HasEjected = HasEjected;
         _bulletGo.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-        _bulletGo.GetComponent<Collider>().enabled = true;
+        _bulletGo.GetComponent<CapsuleCollider>().enabled = true;
         _bulletGo = null;
         Invoke(nameof(SpawnBullet), 0.5f);
     }
@@ -122,13 +122,13 @@ public class JavelinWeapon : Weapon
         string unixTimestampMilliseconds = epochMilliseconds.ToString();
         _bulletGo.name = "JavelinBullet" + unixTimestampMilliseconds;
         _bulletGo.transform.parent = transform;
-        _bulletGo.GetComponent<Collider>().enabled = false;
+        _bulletGo.GetComponent<CapsuleCollider>().enabled = false;
         if (this.tag == Tag.INTERACTABLE)
         {
             _bulletGo.tag = Tag.INTERACTABLE;
             PickableObject po = _bulletGo.AddComponent<PickableObject>();
             po.itemSO = GetComponent<PickableObject>().itemSO;
-            _bulletGo.GetComponent<Collider>().enabled = true;
+            _bulletGo.GetComponent<CapsuleCollider>().enabled = true;
         }
     }
 
