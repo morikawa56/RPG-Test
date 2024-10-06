@@ -8,6 +8,8 @@ public class ScytheWeapon : Weapon
     private const string AnimParmIsattack = "IsAttack";
     private Animator _animator;
 
+    public int AtkValue = 30;
+
     private Transform _parentTransform;
     private bool _hasEquipedTemp = false;
     private bool _firstTimeFlag = true;
@@ -69,9 +71,9 @@ public class ScytheWeapon : Weapon
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == Tag.ENEMY)
         {
-            print("Trigger with: " + other.name);
+            other.GetComponent<Enemy>().TakeDamage(AtkValue);
         }
     }
 }
