@@ -18,6 +18,8 @@ public class DialogUI : MonoBehaviour
 
     public List<string> contentList;
 
+    private GameObject _uiGameObject;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -31,21 +33,22 @@ public class DialogUI : MonoBehaviour
 
     public void Start()
     {
-        nameText = transform.Find("NameTextBg/NameText").GetComponent<TextMeshProUGUI>();
-        contentText = transform.Find("Bg/ContentText").GetComponent<TextMeshProUGUI>();
-        continueButton = transform.Find("ContinueButton").GetComponent<UnityEngine.UI.Button>();
+        nameText = transform.Find("UI/NameTextBg/NameText").GetComponent<TextMeshProUGUI>();
+        contentText = transform.Find("UI/Bg/ContentText").GetComponent<TextMeshProUGUI>();
+        continueButton = transform.Find("UI/ContinueButton").GetComponent<UnityEngine.UI.Button>();
         continueButton.onClick.AddListener(this.OnContinueButtonClick);
+        _uiGameObject = transform.Find("UI").gameObject;
         Hide();
     }
 
     public void Show()
     {
-        gameObject.SetActive(true);
+        _uiGameObject.SetActive(true);
     }
 
     public void Show(string name, string[] content)
     {
-        if (gameObject.activeSelf == false)
+        if (_uiGameObject.activeSelf == false)
         {
             Show();
             contentIndex = 0;
@@ -58,7 +61,7 @@ public class DialogUI : MonoBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        _uiGameObject.SetActive(false);
     }
 
     public void OnContinueButtonClick()

@@ -4,6 +4,7 @@ public class PickableObject : InteractableObject
 
     protected override void Interact()
     {
-        print("Interacting with pickableobject");
+        InventoryManager.Instance.AddItem(itemSO);
+        Destroy(this.gameObject);
     }
 }

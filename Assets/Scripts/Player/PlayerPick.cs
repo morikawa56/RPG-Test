@@ -24,7 +24,6 @@ public class PlayerPick : MonoBehaviour
                 }
 
                 Destroy(po.gameObject);
-
             }
         }
     }
