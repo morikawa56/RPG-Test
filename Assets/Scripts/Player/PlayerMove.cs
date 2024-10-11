@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-public class Player : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     private NavMeshAgent playerAgent;
     // Start is called before the first frame update

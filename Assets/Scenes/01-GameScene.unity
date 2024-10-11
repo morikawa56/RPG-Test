@@ -10588,6 +10588,7 @@ GameObject:
   - component: {fileID: 1832256872}
   - component: {fileID: 1832256878}
   - component: {fileID: 1832256877}
+  - component: {fileID: 1832256881}
   - component: {fileID: 1832256876}
   - component: {fileID: 1832256879}
   - component: {fileID: 1832256880}
@@ -10763,6 +10764,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e2e5fb9c75a88e44ae6304d8dffaf87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1832256881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832256871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc5ce183e74fcd43944a849ff2f926e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1842264721
@@ -11695,7 +11708,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2003560889}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1865208740}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2003560889
 MonoBehaviour:
   m_ObjectHideFlags: 0

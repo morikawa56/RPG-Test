@@ -14,13 +14,19 @@ public class ItemDetailUI : MonoBehaviour
     public GameObject PropertyGrid;
     public GameObject PropertyTemplate;
 
+    private ItemScriptObject _itemSO;
+    private ItemUI _itemUI;
+
     private void Start()
     {
         PropertyTemplate.SetActive(false);
     }
 
-    public void UpdateItemDetailUI(ItemScriptObject itemSO)
+    public void UpdateItemDetailUI(ItemScriptObject itemSO, ItemUI itemUI)
     {
+        this._itemSO = itemSO;
+        this._itemUI = itemUI;
+
         string type = "";
         switch (itemSO.itemTypeSO)
         {
@@ -85,5 +91,10 @@ public class ItemDetailUI : MonoBehaviour
             go.transform.localScale = Vector3.one;
             go.transform.Find("Property").GetComponent<TextMeshProUGUI>().text = propertyStr;
         }
+    }
+
+    public void OnUseButtonClick(ItemScriptObject itemSO, ItemUI itemUI)
+    {
+        InventoryUI.Instance.OnItemUse(itemSO, itemUI);
     }
 }

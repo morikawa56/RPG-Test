@@ -67,8 +67,14 @@ public class InventoryUI : MonoBehaviour
         itemUI.InitItem(itemSO);
     }
 
-    public void OnItemClick(ItemScriptObject itemSO)
+    public void OnItemClick(ItemScriptObject itemSO, ItemUI itemUI)
     {
-        ItemDetailUIObj.UpdateItemDetailUI(itemSO);
+        ItemDetailUIObj.UpdateItemDetailUI(itemSO, itemUI);
+    }
+
+    public void OnItemUse(ItemScriptObject itemSO, ItemUI itemUI)
+    {
+        Destroy(itemUI.gameObject);
+        InventoryManager.Instance.RemoveItem(itemSO);
     }
 }

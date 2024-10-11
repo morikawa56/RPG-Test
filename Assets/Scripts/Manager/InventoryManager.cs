@@ -25,4 +25,9 @@ public class InventoryManager : MonoBehaviour
         itemList.Add(item);
         InventoryUI.Instance.AddItem(item);
     }
+
+    public void RemoveItem(ItemScriptObject itemSO)
+    {
+        itemList.Remove(itemSO);
+    }
 }
