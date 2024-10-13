@@ -46,6 +46,12 @@ public class ScytheWeapon : Weapon
             if ((_parentTransform.name == "WeaponL" || _parentTransform.name == "WeaponR") && _parentTransform.parent.name == "Player")
             {
                 HasEquiped = true;
+                GetComponent<Collider>().isTrigger = true;
+            }
+            else
+            {
+                HasEquiped = false;
+                GetComponent<Collider>().isTrigger = false;
             }
         }
     }
@@ -60,6 +66,12 @@ public class ScytheWeapon : Weapon
             if ((_parentTransform.name == "WeaponL" || _parentTransform.name == "WeaponR") && _parentTransform.parent.name == "Player")
             {
                 HasEquiped = true;
+                GetComponent<Collider>().isTrigger = true;
+            }
+            else
+            {
+                HasEquiped = false;
+                GetComponent<Collider>().isTrigger = false;
             }
         }
     }

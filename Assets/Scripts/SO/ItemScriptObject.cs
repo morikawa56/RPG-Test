@@ -7,10 +7,10 @@ using UnityEngine;
 public class ItemScriptObject : ScriptableObject
 {
     public int id;
-    public string name;
+    public new string name;
     public ItemType itemTypeSO;
     public string description;
-    public List<ItemProperty> propertyList;
+    public List<Property> propertyList;
     public Sprite icon;
     public GameObject prefab;
 }
@@ -22,13 +22,24 @@ public enum ItemType
 }
 
 [Serializable]
-public class ItemProperty
+public class Property
 {
-    public ItemPropertyType propertyType;
+    public PropertyType propertyType;
     public int value;
+
+    public Property()
+    {
+
+    }
+
+    public Property(PropertyType propertyType, int value)
+    {
+        this.propertyType = propertyType;
+        this.value = value;
+    }
 }
 
-public enum ItemPropertyType
+public enum PropertyType
 {
     HPValue,
     EnergyValue,

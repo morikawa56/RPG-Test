@@ -61,7 +61,7 @@ public class InventoryUI : MonoBehaviour
     public void AddItem(ItemScriptObject itemSO)
     {
         GameObject itemGo = GameObject.Instantiate(ItemPrefab);
-        itemGo.transform.parent = _content.transform;
+        itemGo.transform.SetParent(_content.transform);
         itemGo.transform.localScale = Vector3.one;
         ItemUI itemUI = itemGo.GetComponent<ItemUI>();
         itemUI.InitItem(itemSO);
@@ -76,5 +76,7 @@ public class InventoryUI : MonoBehaviour
     {
         Destroy(itemUI.gameObject);
         InventoryManager.Instance.RemoveItem(itemSO);
+
+        GameObject.FindGameObjectWithTag(Tag.PLAYER).GetComponent<Player>().UseItem(itemSO);
     }
 }

@@ -19,6 +19,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void LoadWeapon(ItemScriptObject itemSO)
     {
+        if (weapon != null)
+        {
+            Destroy(weapon.gameObject);
+            weapon = null;
+        }
+
         string prefabName = itemSO.prefab.name;
         Transform weaponParent;
         if (prefabName.Contains("Javelin"))

@@ -20,6 +20,14 @@ public class InventoryManager : MonoBehaviour
 
     public List<ItemScriptObject> itemList;
 
+    public ItemScriptObject DefaultWeapon;
+
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(1);
+        AddItem(DefaultWeapon);
+    }
+
     public void AddItem(ItemScriptObject item)
     {
         itemList.Add(item);

@@ -65,8 +65,6 @@ public class JavelinBullet : MonoBehaviour
             rgd.isKinematic = true;
             col.enabled = false;
         }
-        rgd.velocity = Vector3.zero;
-
     }
 
     public void SetEquiped(bool value)

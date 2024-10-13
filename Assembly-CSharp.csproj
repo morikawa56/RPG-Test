@@ -56,6 +56,7 @@
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\UI\ItemDetailUI.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerProperty.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\SO\ItemScriptObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />

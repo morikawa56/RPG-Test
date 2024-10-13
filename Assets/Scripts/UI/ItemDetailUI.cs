@@ -20,6 +20,7 @@ public class ItemDetailUI : MonoBehaviour
     private void Start()
     {
         PropertyTemplate.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 
     public void UpdateItemDetailUI(ItemScriptObject itemSO, ItemUI itemUI)
@@ -55,19 +56,19 @@ public class ItemDetailUI : MonoBehaviour
             string propertyType = "";
             switch (property.propertyType)
             {
-                case ItemPropertyType.HPValue:
+                case PropertyType.HPValue:
                     propertyType = "HP";
                     break;
-                case ItemPropertyType.EnergyValue:
+                case PropertyType.EnergyValue:
                     propertyType = "EP";
                     break;
-                case ItemPropertyType.MentalValue:
+                case PropertyType.MentalValue:
                     propertyType = "MP";
                     break;
-                case ItemPropertyType.AttackValue:
+                case PropertyType.AttackValue:
                     propertyType = "AP";
                     break;
-                case ItemPropertyType.SpeedValue:
+                case PropertyType.SpeedValue:
                     propertyType = "SP";
                     break;
                 default:
@@ -87,14 +88,15 @@ public class ItemDetailUI : MonoBehaviour
             propertyStr = propertyType + propertyValue;
             GameObject go = GameObject.Instantiate(PropertyTemplate);
             go.SetActive(true);
-            go.transform.parent = PropertyGrid.transform;
+            go.transform.SetParent(PropertyGrid.transform);
             go.transform.localScale = Vector3.one;
             go.transform.Find("Property").GetComponent<TextMeshProUGUI>().text = propertyStr;
+            this.gameObject.SetActive(true);
         }
     }
-
-    public void OnUseButtonClick(ItemScriptObject itemSO, ItemUI itemUI)
+    public void OnUseButtonClick()
     {
-        InventoryUI.Instance.OnItemUse(itemSO, itemUI);
+        InventoryUI.Instance.OnItemUse(_itemSO, _itemUI);
+        this.gameObject.SetActive(false);
     }
 }
