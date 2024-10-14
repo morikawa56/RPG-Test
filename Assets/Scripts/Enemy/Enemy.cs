@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
     private float restTimer = 0;
 
     public int HP = 100;
+
+    public int Exp = 10;
     void Start()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
@@ -74,16 +76,22 @@ public class Enemy : MonoBehaviour
         HP -= damage;
         if (HP <= 0)
         {
-            GetComponent<Collider>().enabled = false;
-            // int count = Random.Range(0, 4);
-            int count = 4;
-            for (int i = 0; i < count; i++)
-            {
-                SpawnPickableItem();
-            }
-
-            Destroy(this.gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        GetComponent<Collider>().enabled = false;
+        // int count = Random.Range(0, 4);
+        int count = 4;
+        for (int i = 0; i < count; i++)
+        {
+            SpawnPickableItem();
+        }
+
+        EventCenter.EnemyDied(this);
+        Destroy(this.gameObject);
     }
 
     private void SpawnPickableItem()

@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Weapon weapon;
+    public Sprite WeaponIcon;
     public void LoadWeapon(Weapon weapon)
     {
         this.weapon = weapon;
@@ -46,6 +47,8 @@ public class PlayerAttack : MonoBehaviour
         weaponGo.transform.localRotation = Quaternion.identity;
 
         this.weapon = weaponGo.GetComponent<Weapon>();
+        this.WeaponIcon = itemSO.icon;
+        PlayerPropertyUI.Instance.UpdatePlayerPropertyUI();
     }
 
     private void Update()
